@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="container my-4">
+  <form class="form-signin" action="/dashboard" method="post">
+    <h1 class="h3 mb-3 fw-normal"><b>Admin Login</b></h1>
+    <div class="form-floating">
+      <label for="floatingInput">Username</label>
+      <input type="text" class="form-control" name="username" id="floatingInput" placeholder="Your Username">
+    </div>
+    <div class="form-floating my-3">
+      <label for="floatingPassword">Password</label>
+      <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Your Password">
+    </div>
+
+    <div class="text-center my-4">
+      <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
+    </div>
+    <p class="mt-5 mb-3 text-muted">© {{params['blog_name']}} 2022–2023</p>
+  </form>
+</div>
+{% endblock body %}

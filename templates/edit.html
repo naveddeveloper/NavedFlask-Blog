@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="text-center my-4">
+  <hr>
+  <h2><b>Welcome to Admin Panel</b></h2>
+</div>
+<div class="container my-4">
+  <hr>
+  <h4>Basic Actions</h4>
+  <a href="/dashboard"><button class="btn-primary">Dashboard Home</button></a>
+  <a href="/logout"><button class="btn-primary">Logout</button></a>
+  <hr>
+  <h4>Add / Edit a Post</h4>
+  <form class="form-signin" action="/edit/{{sno}}" method="POST">
+    <div class="form-floating my-3">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="{{post.title}}">
+    </div>
+    <div class="form-floating my-3">
+      <label for="subtitle">SubTitle</label>
+      <input type="text" class="form-control" name="subtitle" id="subtitle" placeholder="Subtitle"
+        value="{{post.subtitle}}">
+    </div>
+    <div class="form-floating my-3">
+      <label for="subcontent">SubContent</label>
+      <input type="text" class="form-control" name="subcontent" id="subcontent" placeholder="SubContent"
+        value="{{post.subcontent}}">
+    </div>
+    <div class="form-floating my-3">
+      <label for="tagline">Tagline</label>
+      <input type="text" class="form-control" name="tagline" id="tagline" placeholder="Tagline"
+        value="{{post.tagline}}">
+    </div>
+    <div class="form-floating my-3">
+      <label for="slug">Slug</label>
+      <input type="text" class="form-control" name="slug" id="slug" placeholder="Slug" value="{{post.slug}}">
+    </div>
+    <div class="form-floating my-3">
+      <label for="content">Content</label>
+      <input type="text" class="form-control" name="content" id="content" placeholder="Content"
+        value="{{post.content}}">
+    </div>
+    <div class="form-floating my-3">
+      <label for="img_file">Image File</label>
+      <input type="text" class="form-control" name="img_file" id="img_file" placeholder="Image file"
+        value="{{post.img_file}}">
+    </div>
+    <div class="text-center">
+      <button class="btn-sm btn-primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock body %}

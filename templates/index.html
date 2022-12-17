@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- Carousel Start -->
+<div class="container p-0">
+    <div id="blog-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="{{ url_for('static', filename='img/carousel-1.jpg') }}" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <h2 class="mb-3 text-white font-weight-bold">{{params['blog_name']}}</h2>
+                    <div class="d-flex text-white">
+                        <small class="mr-2"><i class="fa fa-calendar-alt"></i>{{date}}</small>
+                        <small class="mr-2"><i class="fa fa-folder"></i> Web Design</small>
+                    </div>
+                    <a href="/blog" class="btn btn-lg btn-outline-light mt-4">Read my Blog</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img class="w-100" src="{{ url_for('static', filename='img/carousel-2.jpg') }}" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <h2 class="text-white font-weight-bold">{{params['blog_name']}}</h2>
+                    <div class="d-flex">
+                        <small class="mr-2"><i class="fa fa-calendar-alt"></i> {{date}}</small>
+                        <small class="mr-2"><i class="fa fa-folder"></i> Android Development</small>
+                    </div>
+                    <a href="/blog" class="btn btn-lg btn-outline-light mt-4">Read More</a>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img class="w-100" src="{{ url_for('static', filename='img/carousel-3.jpg')}}" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <h2 class="text-white font-weight-bold">{{params['blog_name']}}</h2>
+                    <div class="d-flex">
+                        <small class="mr-2"><i class="fa fa-calendar-alt"></i> {{date}}</small>
+                        <small class="mr-2"><i class="fa fa-folder"></i> All Launague</small>
+                    </div>
+                    <a href="/blog" class="btn btn-lg btn-outline-light mt-4">Read More</a>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+<!-- Carousel End -->
+
+
+<!-- Blog List Start -->
+{% for post in posts %}
+{% set fname = 'img/' + post.img_file %}
+<div class="container bg-white pt-5">
+    <div class="row blog-item px-3 pb-5">
+        <div class="col-md-5">
+            <img class="img-fluid mb-4 mb-md-0" src="{{ url_for('static', filename=fname)}}" alt="Image">
+        </div>
+        <div class="col-md-7">
+            <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold"><a
+                    href="/post/{{post.slug}}">{{post.title}}</a></h3>
+            <div class="d-flex mb-3">
+                <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i>{{post.date}}</small>
+                <small class="mr-2 text-muted"><i class="fa fa-folder"></i> {{post.tagline}}</small>
+            </div>
+            <p>
+                {{post.content[0:120]}}...
+            </p>
+            <a class="btn btn-link p-0" href="/post/{{post.slug}}">Read More <i class="fa fa-angle-right"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="container text-right">
+        <a href="/blog"><button class="btn-primary mb-4 btn-lg">More Blogs</button></a>
+    </div>
+
+    <!-- Blog List End -->
+
+
+    {% endblock body %}

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+<body>
+    {% block body %}
+    <!-- Page Header Start -->
+    <div class="container py-5 px-2 bg-primary">
+        <div class="row py-5 px-4">
+            <div class="col-sm-6 text-center text-md-left">
+                <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">My Blog</h1>
+            </div>
+            <div class="col-sm-6 text-center text-md-right">
+                <div class="d-inline-flex pt-2">
+                    <h4 class="m-0 text-white"><a class="text-white" href="/">Home</a></h4>
+                    <h4 class="m-0 text-white px-2">/</h4>
+                    <h4 class="m-0 text-white">My Blog</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+    {% for post in posts %}
+    {% set fname = 'img/' + post.img_file %}
+    <div class="container bg-white pt-5">
+        <div class="row blog-item px-3 pb-5">
+            <div class="col-md-5">
+                <img class="img-fluid mb-4 mb-md-0" src="{{ url_for('static', filename=fname) }}" alt="Image">
+            </div>
+            <div class="col-md-7">
+                <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold"><a
+                        href="/post/{{post.slug}}">{{post.title}}</a></h3>
+                <div class="d-flex mb-3">
+                    <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i>{{post.date}}</small>
+                    <small class="mr-2 text-muted"><i class="fa fa-folder"></i> {{post.tagline}}</small>
+                </div>
+                <p>
+                    {{post.content[0:120]}}...
+                </p>
+                <a class="btn btn-link p-0" href="/post/{{post.slug}}">Read More <i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="container mb-4 clearfix">
+            <a href="{{prev}}" class="btn btn-primary float-left">&larr; Previous</a>
+            <a href="{{next}}" class="btn btn-primary float-right">Next &rarr;</a>
+        </div>
+</body>
+<!-- Blog List End -->
+{% endblock body %}

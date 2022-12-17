@@ -1,0 +1,22 @@
+{
+    "params":{
+        "local_server": "True",
+        "local_uri": "mysql://root:@localhost/navedwebblog",
+        "prod_uri": "mysql://root:@localhost/navedwebblog",
+        "fb_uri": "https://facebook.com/ansarinaved225",
+        "in_uri": "https://instagram.com/ansarinaved225",
+        "link_uri": "https://www.linkedin.com/in/naved-ansari-a15b7a21b/",
+        "tw_uri": "https://twitter.com/ansarinaved225",
+        "blog_name": "NavedBlog",
+        "gmail_user": "ansarinaved.microsoft@gmail.com",
+        "gmail_password": "YOUR_GMAIL_PASSOWRD",
+        "about_text": "A computer programmer, sometimes referred to as a software developer, a software engineer, a programmer or a coder, is a person who creates computer programs — often for larger computer software.",
+        "no_of_post": 2,
+        "admin_user": "ADMIN_USERNAME",
+        "admin_password": "ADMIN_PASSWORD",
+        "upload_location": "UPLOAD_LOCATION",
+        "address": "YOUR_ADDRESS",
+        "mobile_no": "YOUR_MOBILE_NUMBER",
+        "dev_gmail": "YOUR_GMAIL_ID"
+    }
+}

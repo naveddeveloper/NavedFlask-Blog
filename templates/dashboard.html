@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container my-4">
+    <div class="text-center">
+        <h2><b>Welcome to Admin Panel</b></h2>
+        <hr>
+        <a href="/edit/0"><button class="btn-primary">Add New Post</button></a>
+        <a href="/logout"><button class="btn-primary">Logout</button></a>
+    </div>
+    <hr>
+    <h5>Upload a file</h5>
+    <form action="/uploader" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="file"><br>
+        <button class="btn-primary my-2" type="submit">Upload</button>
+    </form>
+    <div class="text-center">
+        <h5>Edit a Post</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td>{{post.sno}}</td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.date}}</td>
+                    <td><a href="/edit/{{post.sno}}"><button class="btn-primary">Edit</button></a></td>
+                    <td><a href="/delete/{{post.sno}}"><button class="btn-primary">Delete</button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}

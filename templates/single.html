@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- Page Header Start -->
+<div class="container py-5 px-2 bg-primary">
+    <div class="row py-5 px-4">
+        <div class="col-sm-6 text-center text-md-left">
+            <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">Blog Detail</h1>
+        </div>
+        <div class="col-sm-6 text-center text-md-right">
+            <div class="d-inline-flex pt-2">
+                <h4 class="m-0 text-white"><a class="text-white" href="/">Home</a></h4>
+                <h4 class="m-0 text-white px-2">/</h4>
+                <h4 class="m-0 text-white">Blog Detail</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+{% set fname = 'img/' + post.img_file %}
+<!-- Blog Detail Start -->
+<div class="container py-5 px-2 bg-white">
+    <div class="row px-4">
+        <div class="col-12">
+            <img class="img-fluid mb-4" src="{{ url_for('static', filename=fname) }}" alt="Image">
+            <h2 class="mb-3 font-weight-bold">{{post.title}}</h2>
+            <div class="d-flex">
+                <p class="mr-3 text-muted"><i class="fa fa-calendar-alt"></i> {{post.date}}</p>
+                <p class="mr-3 text-muted"><i class="fa fa-folder"></i> Web Design</p>
+            </div>
+            <p>{{post.content}}</p>
+            <h3 class="mb-3 font-weight-bold">{{post.subtitle}}</h3>
+            <img class="w-50 float-left mr-4 mb-3" src="{{ url_for('static', filename=fname) }}" alt="Image">
+            <p>{{post.subcontent}}</p>
+        </div>
+        <div class="col-12 py-4">
+            {% for i in range(1, 5) %}
+            <a href="" class="btn btn-sm btn-outline-primary mb-1">Blog {{i}}</a>
+            {% endfor %}
+        </div>
+        <div class="col-12 py-4">
+            <div class="btn-group btn-group-lg w-100">
+                <button type="button" class="btn btn-outline-primary"><i class="fa fa-angle-left mr-2"></i>
+                    Previous</button>
+                <button type="button" class="btn btn-outline-primary">Next<i
+                        class="fa fa-angle-right ml-2"></i></button>
+            </div>
+        </div>
+        <div class="container my-3">
+            <div class="fb-comments" data-href="http://127.0.0.1:5000" data-width="5" loading="lazy" data-numposts="5">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Detail End -->
+{% endblock body %}
