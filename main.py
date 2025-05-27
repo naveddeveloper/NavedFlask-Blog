@@ -7,6 +7,9 @@ import json
 import math
 import os
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 # Reading a json file cofig.json
 with open('cofig.json', 'r') as c:
     params = json.load(c)["params"]
@@ -34,8 +37,6 @@ else:
 db = SQLAlchemy(app)
 
 # Contact Database Model
-
-
 class Contact(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
@@ -55,9 +56,12 @@ class Posts(db.Model):
     slug = db.Column(db.String(30), nullable=False)
     content = db.Column(db.String(120), nullable=False)
     tagline = db.Column(db.String(120), nullable=False)
-    date = db.Column(db.String(12), nullable=True)
-    img_file = db.Column(db.String(12), nullable=True)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    img_file = db.Column(db.String(400), nullable=True)
 
+
+with app.app_context():
+    db.create_all()
 
 @app.route("/")
 def home():
