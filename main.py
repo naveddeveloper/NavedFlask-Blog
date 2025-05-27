@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 import json
 import math
 import os
+from waitress import serve
 
 import pymysql
 pymysql.install_as_MySQLdb()
@@ -234,4 +235,6 @@ def contact():
     return render_template('contact.html', params=params)
 
 
-app.run(debug=True)
+if __name__ == "__main__":
+    print("Server is running...")
+    serve(app, host="0.0.0.0", port=5000)
